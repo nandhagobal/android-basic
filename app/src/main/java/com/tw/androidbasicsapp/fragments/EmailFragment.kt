@@ -1,4 +1,4 @@
-package com.tw.androidbasicsapp
+package com.tw.androidbasicsapp.fragments
 
 import android.app.Activity
 import android.content.Intent
@@ -17,6 +17,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.movieapp.intents.OpenFolderIntent
 import com.example.movieapp.intents.SendIntent
+import com.tw.androidbasicsapp.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,7 +74,7 @@ class EmailFragment : Fragment() {
             }
         activityButton.setOnClickListener{
             val sendIntent = SendIntent()
-            val intent =sendIntent.sendMail(toAddressET.text.toString(), subjectET.text.toString(), bodyET.text.toString(),imageUri)
+            val intent =sendIntent.sendMailWithAttachment(toAddressET.text.toString(), subjectET.text.toString(), bodyET.text.toString(),imageUri)
             startActivity(intent)
 
         attachmentButton.setOnClickListener{

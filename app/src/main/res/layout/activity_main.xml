@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.tw.androidbasicsapp.EmailFragment"
+        android:name="com.tw.androidbasicsapp.fragments.MusicPlayerFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1" />
@@ -26,18 +26,28 @@
             android:layout_gravity="center"
             android:orientation="horizontal" >
         <Button
+            android:id="@+id/emailButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             ></Button>
         <Button
+            android:id="@+id/musicPlayerButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Music Player"
             android:layout_margin="10dp"
             >
         </Button>
+            <Button
+                android:id="@+id/news"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEWS"
+                android:layout_margin="10dp"
+                >
+            </Button>
         </LinearLayout>
     </HorizontalScrollView>
 

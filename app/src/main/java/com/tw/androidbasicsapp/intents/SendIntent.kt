@@ -4,7 +4,7 @@ import android.content.Intent
 import android.net.Uri
 
 class SendIntent {
-    public fun sendMail(
+    public fun sendMailWithAttachment(
         toAddress: String,
         subject: String,
         body: String,
