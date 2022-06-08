@@ -2,16 +2,20 @@ package com.tw.androidbasicsapp.adapters
 
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import com.tw.androidbasicsapp.NewsFeedActivity
 import com.tw.androidbasicsapp.R
 import com.tw.androidbasicsapp.models.News
 
@@ -29,18 +33,16 @@ class NewsAdapter(private val context: FragmentActivity?,private var newsFeeds: 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val titleTextView: TextView = view.findViewById(R.id.titleTextView)
-//        val contentTextView = view.findViewById<TextView>(R.id.contentTextView)
         val imageView: ImageView = view.findViewById(R.id.imageView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.titleTextView.text = newsFeeds[position].title
-//        holder.contentTextView.text = newsFeeds[position].content
-//        holder.titleTextView.setOnClickListener {
-//            var intent = Intent(context, SingleNewsFeedActivity::class.java)
-//            intent.putExtra("id", newsFeeds[position].id)
-//            startActivity(context, intent, null)
-//        }
+        holder.titleTextView.setOnClickListener {
+            val intent = Intent(context, NewsFeedActivity::class.java)
+            intent.putExtra("id", newsFeeds[position].id)
+            startActivity(context as Context, intent, null)
+        }
         class PicassoHandler : Callback {
             override fun onSuccess() {
                 Log.e("NewsFeed", "Image loaded")

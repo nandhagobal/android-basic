@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_feed.xml" value="0.12239583333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_news_feed.xml" value="0.11574074074074074" />
         <entry key="app/src/main/res/layout/fragment_email.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_music_player.xml" value="0.1109375" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.1109375" />
