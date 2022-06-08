@@ -2,3 +2,7 @@ fileignoreconfig:
 - filename: .idea/misc.xml
   checksum: 8b8ec0991f4d79e47934fc136656fee1821daadc2814a6a185025e7bd0234ce5
 version: ""
+fileignoreconfig:
+- filename: .idea/misc.xml
+  checksum: a00a2d25381785f95c8a4df1aaadb4e8ce06d23dd34003b951453492b1c11403
+version: ""

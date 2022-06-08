@@ -30,14 +30,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class EmailFragment : Fragment() {
-    private lateinit var activityButton : Button;
-    private lateinit var attachmentButton : Button;
-    private lateinit var imageDisplay : ImageView;
+    private lateinit var activityButton : Button
+    private lateinit var attachmentButton : Button
+    private lateinit var imageDisplay : ImageView
     private lateinit var toAddressET: EditText
     private lateinit var bodyET: EditText
     private lateinit var subjectET: EditText
-    private lateinit var startForResult: ActivityResultLauncher<Intent>;
-    var imageUri: Uri? =null
+    private lateinit var startForResult: ActivityResultLauncher<Intent>
+    private var imageUri: Uri? =null
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -69,7 +69,7 @@ class EmailFragment : Fragment() {
                 if (result.resultCode == Activity.RESULT_OK) {
                     imageUri = result.data?.data
                     imageDisplay.setImageURI(imageUri)
-                    imageDisplay.visibility=ImageView.VISIBLE;
+                    imageDisplay.visibility=ImageView.VISIBLE
                 }
             }
         activityButton.setOnClickListener{

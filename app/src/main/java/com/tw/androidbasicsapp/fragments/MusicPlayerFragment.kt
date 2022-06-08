@@ -1,5 +1,6 @@
 package com.tw.androidbasicsapp.fragments
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.media.MediaPlayer
@@ -43,6 +44,7 @@ class MusicPlayerFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -93,6 +95,7 @@ class MusicPlayerFragment : Fragment() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getDurationOfSong() {
         val mediaPlayer = MediaPlayer()
         mediaPlayer.reset()

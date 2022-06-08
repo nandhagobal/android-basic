@@ -8,23 +8,19 @@ import android.os.IBinder
 import android.util.Log
 
 class PlayMusicService : Service() {
-    var mediaPlayer: MediaPlayer? = null
-    override fun onCreate() {
-        super.onCreate()
-    }
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Log.e("start","oncmdStart")
-        if(mediaPlayer == null) {
-            mediaPlayer = MediaPlayer.create(this, Uri.parse(intent?.extras?.get("URI") as String))
-            mediaPlayer?.start()
-//            mediaPlayer?.seekTo(intent?.extras?.get("position") as Int)
-        }
-        else if(mediaPlayer?.isPlaying == true)
-            mediaPlayer?.pause()
-
-        else {
-            mediaPlayer?.start()
+        when {
+            mediaPlayer == null -> {
+                mediaPlayer = MediaPlayer.create(this, Uri.parse(intent?.extras?.get("URI") as String))
+                mediaPlayer?.start()
+    //            mediaPlayer?.seekTo(intent?.extras?.get("position") as Int)
+            }
+            mediaPlayer?.isPlaying == true -> mediaPlayer?.pause()
+            else -> {
+                mediaPlayer?.start()
+            }
         }
 
         return START_NOT_STICKY

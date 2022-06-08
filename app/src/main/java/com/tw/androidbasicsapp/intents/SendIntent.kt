@@ -4,13 +4,13 @@ import android.content.Intent
 import android.net.Uri
 
 class SendIntent {
-    public fun sendMailWithAttachment(
+    fun sendMailWithAttachment(
         toAddress: String,
         subject: String,
         body: String,
         attachmentUri: Uri?
     ): Intent {
-        var intent = Intent().apply {
+        val intent = Intent().apply {
             action = Intent.ACTION_SEND
             putExtra(Intent.EXTRA_TEXT, body)
             type = "text/plain"
@@ -22,6 +22,6 @@ class SendIntent {
             type = "image/*"
 
         }
-        return intent;
+        return intent
     }
 }
