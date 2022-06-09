@@ -12,21 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidBasicsApp"
         android:usesCleartextTraffic="true">
+
         <activity
-        android:name=".activities.NewsFeedActivity"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.VIEW" />
+            android:name=".activities.NewsFeedActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-            <data
-                android:host="www.topnews.com"
-                android:pathPrefix="/news"
-                android:scheme="http" />
+                <data
+                    android:host="www.topnews.com"
+                    android:pathPrefix="/news"
+                    android:scheme="http" />
 
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-        </intent-filter>
-    </activity>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+
         <service
             android:name=".services.PlayMusicService"
             android:enabled="true"

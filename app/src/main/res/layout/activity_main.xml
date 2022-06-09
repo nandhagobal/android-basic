@@ -14,41 +14,11 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
-    <HorizontalScrollView
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="7">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:orientation="horizontal" >
-        <Button
-            android:id="@+id/emailButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:layout_margin="10dp"
-            ></Button>
-        <Button
-            android:id="@+id/musicPlayerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Music Player"
-            android:layout_margin="10dp"
-            >
-        </Button>
-            <Button
-                android:id="@+id/newsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NEWS"
-                android:layout_margin="10dp"
-                >
-            </Button>
-        </LinearLayout>
-    </HorizontalScrollView>
-
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation_items" />
 </LinearLayout>

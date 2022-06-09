@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item android:id="@+id/emailItem"
+        android:title="mail"
+        android:icon="@drawable/icon_mail" />
+    <item android:id="@+id/musicItem"
+        android:title="music"
+        android:icon="@drawable/icon_music" />
+    <item android:id="@+id/newsItem"
+        android:title="news"
+        android:icon="@drawable/icon_news" />
+</menu>

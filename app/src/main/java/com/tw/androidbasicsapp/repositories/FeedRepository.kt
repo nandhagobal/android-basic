@@ -15,8 +15,11 @@ class FeedRepository {
         val news = Api.create().getNewsFeeds()
         news.enqueue(object : Callback<List<News>> {
             override fun onResponse(call: Call<List<News>>, response: Response<List<News>>) {
-                Log.e("Response", "\${response.body()} = " + response.body())
-                newsFeedList = response.body()!!
+                val body = response.body()
+                body?.let{
+                    Log.e("Response", "\${response.body()} = " + body)
+                    newsFeedList = it
+                }
 
                 if (observer != null) {
                     observer!!.onNewsFeedUpdated((newsFeedList as ArrayList<News>))
