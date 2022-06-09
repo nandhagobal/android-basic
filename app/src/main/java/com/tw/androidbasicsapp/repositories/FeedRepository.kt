@@ -24,7 +24,6 @@ class FeedRepository {
             }
 
             override fun onFailure(call: Call<List<News>>, t: Throwable) {
-//                call.execute()
                 Log.e("Response", "Failed to load data ${t.message}")
             }
         })
@@ -46,9 +45,6 @@ class FeedRepository {
             }
 
             override fun onFailure(call: Call<News>, t: Throwable) {
-                if(!news.isExecuted)
-                    call.execute()
-
                 Log.e("Response", "Failed to load data " + t.message)
             }
 

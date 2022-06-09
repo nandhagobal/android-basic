@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import com.tw.androidbasicsapp.NewsFeedActivity
+import com.tw.androidbasicsapp.activities.NewsFeedActivity
 import com.tw.androidbasicsapp.R
 import com.tw.androidbasicsapp.models.News
 
@@ -35,6 +35,7 @@ class NewsAdapter(private val context: FragmentActivity?,private var newsFeeds: 
         val titleTextView: TextView = view.findViewById(R.id.titleTextView)
         val imageView: ImageView = view.findViewById(R.id.imageView)
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.titleTextView.text = newsFeeds[position].title

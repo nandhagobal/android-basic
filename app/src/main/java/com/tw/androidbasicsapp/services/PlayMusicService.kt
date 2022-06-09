@@ -15,7 +15,6 @@ class PlayMusicService : Service() {
             mediaPlayer == null -> {
                 mediaPlayer = MediaPlayer.create(this, Uri.parse(intent?.extras?.get("URI") as String))
                 mediaPlayer?.start()
-    //            mediaPlayer?.seekTo(intent?.extras?.get("position") as Int)
             }
             mediaPlayer?.isPlaying == true -> mediaPlayer?.pause()
             else -> {
@@ -28,7 +27,7 @@ class PlayMusicService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.e("duration",mediaPlayer?.duration.toString())
+        Log.e("duration", mediaPlayer?.duration.toString())
         mediaPlayer?.stop()
         mediaPlayer?.release()
     }

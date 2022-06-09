@@ -7,7 +7,6 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +16,8 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
+import com.example.movieapp.intents.OpenFolderIntent
 import com.tw.androidbasicsapp.R
 import com.tw.androidbasicsapp.services.PlayMusicService
 
@@ -26,7 +27,8 @@ private const val ARG_PARAM2 = "param2"
 class MusicPlayerFragment : Fragment() {
     private lateinit var playMusicButton: Button
     private lateinit var chooseButton: Button
-    private lateinit var endTimeTV: TextView
+    private lateinit var endTimeTextView: TextView
+    private lateinit var songNameTextView: TextView
     private var intentService: Intent? = null
     private lateinit var startForResult: ActivityResultLauncher<Intent>
     private var uri: String? = null
@@ -51,15 +53,13 @@ class MusicPlayerFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_music_player, container, false)
-        endTimeTV = view.findViewById(R.id.endTimeTV)
+        endTimeTextView = view.findViewById(R.id.endTimeTextView)
+        songNameTextView = view.findViewById(R.id.SongNameTextView)
         playMusicButton = view.findViewById(R.id.playMusicButton)
         chooseButton = view.findViewById(R.id.chooseButton)
 
         chooseButton.setOnClickListener {
-            val getMusicIntent = Intent().apply {
-                action = Intent.ACTION_GET_CONTENT
-                type = "audio/*"
-            }
+            val getMusicIntent = OpenFolderIntent().pickSong()
             startForResult.launch(getMusicIntent)
         }
 
@@ -72,17 +72,14 @@ class MusicPlayerFragment : Fragment() {
                 isPlaying = !isPlaying
                 if (isPlaying) playMusicButton.text = "PAUSE"
                 else playMusicButton.text = "PLAY"
-//                getDurationOfSong()
             }
         }
-
 
         startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
         { result: ActivityResult ->
             if (result.resultCode == Activity.RESULT_OK) {
                 uri = result.data?.data.toString()
-                getDurationOfSong()
-
+                setSongDetailsToView()
             }
         }
         return view
@@ -96,7 +93,11 @@ class MusicPlayerFragment : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun getDurationOfSong() {
+    private fun setSongDetailsToView() {
+        val startingIndexOfName: Int? = uri?.lastIndexOf('/')
+        val songName = uri?.substring(startingIndexOfName!!.plus(1))
+        songNameTextView.text = songName
+
         val mediaPlayer = MediaPlayer()
         mediaPlayer.reset()
         activity?.let { it1 -> mediaPlayer.setDataSource(it1.applicationContext, Uri.parse(uri)) }
@@ -104,7 +105,7 @@ class MusicPlayerFragment : Fragment() {
         mediaPlayer.setOnPreparedListener {
             val min: Int = it.duration / 60000
             val sec: Int = ((it.duration / 60000) - min) * 60
-            endTimeTV.text = "0$min:$sec"
+            endTimeTextView.text = "0$min:$sec"
             Log.e("Timing", "0$min:$sec")
         }
     }

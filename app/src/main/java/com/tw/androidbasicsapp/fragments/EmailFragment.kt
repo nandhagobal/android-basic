@@ -24,20 +24,16 @@ import com.tw.androidbasicsapp.R
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [EmailFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class EmailFragment : Fragment() {
-    private lateinit var activityButton : Button
-    private lateinit var attachmentButton : Button
-    private lateinit var imageDisplay : ImageView
-    private lateinit var toAddressET: EditText
-    private lateinit var bodyET: EditText
-    private lateinit var subjectET: EditText
+    private lateinit var activityButton: Button
+    private lateinit var attachmentButton: Button
+    private lateinit var imageDisplay: ImageView
+    private lateinit var toAddressEditableText: EditText
+    private lateinit var bodyEditableText: EditText
+    private lateinit var subjectEditableText: EditText
     private lateinit var startForResult: ActivityResultLauncher<Intent>
-    private var imageUri: Uri? =null
+    private var imageUri: Uri? = null
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -57,46 +53,43 @@ class EmailFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_email, container, false)
 
-        activityButton= view.findViewById(R.id.activityButton)
-        attachmentButton= view.findViewById(R.id.attachmentButton)
-        imageDisplay= view.findViewById(R.id.imageDisplay)
-        toAddressET = view.findViewById(R.id.toAddressET)
-        bodyET = view.findViewById(R.id.bodyET)
-        subjectET = view.findViewById(R.id.subjectET)
+        activityButton = view.findViewById(R.id.activityButton)
+        attachmentButton = view.findViewById(R.id.attachmentButton)
+        imageDisplay = view.findViewById(R.id.imageDisplay)
+        toAddressEditableText = view.findViewById(R.id.toAddressET)
+        bodyEditableText = view.findViewById(R.id.bodyET)
+        subjectEditableText = view.findViewById(R.id.subjectET)
 
         startForResult =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 if (result.resultCode == Activity.RESULT_OK) {
                     imageUri = result.data?.data
                     imageDisplay.setImageURI(imageUri)
-                    imageDisplay.visibility=ImageView.VISIBLE
+                    imageDisplay.visibility = ImageView.VISIBLE
                 }
             }
-        activityButton.setOnClickListener{
+        activityButton.setOnClickListener {
             val sendIntent = SendIntent()
-            val intent =sendIntent.sendMailWithAttachment(toAddressET.text.toString(), subjectET.text.toString(), bodyET.text.toString(),imageUri)
+            val intent = sendIntent.sendMailWithAttachment(
+                toAddressEditableText.text.toString(),
+                subjectEditableText.text.toString(),
+                bodyEditableText.text.toString(),
+                imageUri
+            )
             startActivity(intent)
 
-        attachmentButton.setOnClickListener{
-            Log.e("attach","working")
-            val openFolderIntent = OpenFolderIntent()
-            val pickImageIntent = openFolderIntent.pickImage()
-            startForResult.launch(pickImageIntent)
+            attachmentButton.setOnClickListener {
+                Log.e("attach", "working")
+                val pickImageIntent = OpenFolderIntent().pickImage()
+                startForResult.launch(pickImageIntent)
+            }
         }
-    }
 
         return view
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EmailFragment.
-         */
+
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =

@@ -1,9 +1,10 @@
-package com.tw.androidbasicsapp
+package com.tw.androidbasicsapp.activities
 
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
+import com.tw.androidbasicsapp.R
 import com.tw.androidbasicsapp.fragments.EmailFragment
 import com.tw.androidbasicsapp.fragments.MusicPlayerFragment
 import com.tw.androidbasicsapp.fragments.NewsFragment

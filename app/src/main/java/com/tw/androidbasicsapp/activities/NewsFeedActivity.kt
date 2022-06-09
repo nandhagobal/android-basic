@@ -1,4 +1,4 @@
-package com.tw.androidbasicsapp
+package com.tw.androidbasicsapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
+import com.tw.androidbasicsapp.R
 import com.tw.androidbasicsapp.models.News
 import com.tw.androidbasicsapp.repositories.FeedRepository
 import com.tw.androidbasicsapp.repositories.NewsFeedEventListener
