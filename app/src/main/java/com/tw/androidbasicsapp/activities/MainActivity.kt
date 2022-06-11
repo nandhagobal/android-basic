@@ -9,11 +9,14 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import com.tw.androidbasicsapp.AppBroadcastReceiver
 import com.tw.androidbasicsapp.R
 import com.tw.androidbasicsapp.fragments.EmailFragment
 import com.tw.androidbasicsapp.fragments.MusicPlayerFragment
 import com.tw.androidbasicsapp.fragments.NewsFragment
+import com.tw.androidbasicsapp.fragments.NewsTabFragment
+import com.tw.androidbasicsapp.utilis.Position
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fragmentContainer:FragmentContainerView
@@ -25,9 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<BottomNavigationView>(R.id.bottom_navigation).selectedItemId = R.id.musicItem
 
-        val bottomNavigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
-        bottomNavigation.setOnNavigationItemSelectedListener{
-            Log.e("listerner check","entered")
+        val bottomNavigation = findViewById<NavigationBarView>(R.id.bottom_navigation)
+        bottomNavigation.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.emailItem -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView,EmailFragment()).commit()
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.newsItem -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView,NewsFragment()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView,NewsTabFragment()).commit()
                     true
                 }
                 else -> false
