@@ -2,7 +2,7 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Like" android:icon="@drawable/icon_like" android:iconTint="@color/like_blue"></item>
-    <item android:title="Dislike" android:icon="@drawable/icon_dislike" android:iconTint="@color/red"/>
-    <item android:title="Spam" android:icon="@drawable/icon_spam" android:iconTint="@color/orange"/>
+    <item android:title="Like" android:id="@+id/likeItem" android:icon="@drawable/icon_like" android:iconTint="@color/like_blue"></item>
+    <item android:title="Dislike" android:id="@+id/dislikeItem" android:icon="@drawable/icon_dislike" android:iconTint="@color/red"/>
+    <item android:title="Spam" android:id="@+id/spamItem" android:icon="@drawable/icon_spam" android:iconTint="@color/orange"/>
 </menu>

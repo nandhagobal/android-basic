@@ -13,8 +13,6 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.view.menu.MenuBuilder
-import androidx.appcompat.view.menu.MenuPopupHelper
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.content.ContextCompat.startActivity
@@ -47,7 +45,7 @@ class NewsAdapter(
         val titleTextView: TextView = view.findViewById(R.id.titleTextView)
         val imageView: ImageView = view.findViewById(R.id.imageView)
         val newsCard: CardView = view.findViewById(R.id.newsCard)
-        val menu: ImageView = view.findViewById(R.id.imageView2)
+        val menu: ImageView = view.findViewById(R.id.menuImageView)
     }
 
 
@@ -60,12 +58,29 @@ class NewsAdapter(
                 R.drawable.menu_vertical
             )
         })
+
         holder.menu.setOnClickListener {
-            val popupMenu = PopupMenu(context,holder.menu)
-            popupMenu.menuInflater.inflate(R.menu.popup_menu_items,popupMenu.menu)
+            val popupMenu = PopupMenu(context, holder.menu)
+            popupMenu.menuInflater.inflate(R.menu.popup_menu_items, popupMenu.menu)
             popupMenu.setForceShowIcon(true)
             popupMenu.show()
+            popupMenu.setOnMenuItemClickListener {
+                Log.e("Menu", "${it.itemId}")
+                true
+                when(it.itemId) {
+                    R.id.dislikeItem -> {
+                        removeItem(position)
+                        true
+                    }
+                    else -> false
+                }
+            }
         }
+
+//        popupMenu.setOnMenuItemClickListener {
+//            Log.e("Menu","Clicked")
+//            true
+//        }
         holder.newsCard.setOnClickListener {
             val intent = Intent(context, NewsFeedActivity::class.java)
             intent.putExtra("id", newsFeeds[position].id)
@@ -87,6 +102,13 @@ class NewsAdapter(
             .error(R.mipmap.ic_launcher)
             .placeholder(R.mipmap.ic_launcher)
             .into(holder.imageView, PicassoHandler())
+    }
+
+    private fun removeItem(position: Int) {
+        Log.e("position", "$position")
+        newsFeeds.removeAt(position)
+        notifyDataSetChanged()
+
     }
 
     @SuppressLint("NotifyDataSetChanged")
