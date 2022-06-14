@@ -1,4 +1,4 @@
-package com.tw.androidbasicsapp
+package com.tw.androidbasicsapp.recievers
 
 import android.content.BroadcastReceiver
 import android.content.Context

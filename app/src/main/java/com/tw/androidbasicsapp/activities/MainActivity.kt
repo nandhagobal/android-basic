@@ -5,18 +5,15 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
-import com.tw.androidbasicsapp.AppBroadcastReceiver
+import com.tw.androidbasicsapp.recievers.AppBroadcastReceiver
 import com.tw.androidbasicsapp.R
 import com.tw.androidbasicsapp.fragments.EmailFragment
 import com.tw.androidbasicsapp.fragments.MusicPlayerFragment
-import com.tw.androidbasicsapp.fragments.NewsFragment
 import com.tw.androidbasicsapp.fragments.NewsTabFragment
-import com.tw.androidbasicsapp.utilis.Position
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fragmentContainer:FragmentContainerView

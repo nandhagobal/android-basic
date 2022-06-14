@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Like" android:icon="@drawable/icon_like" android:iconTint="@color/like_blue"></item>
+    <item android:title="Dislike" android:icon="@drawable/icon_dislike" android:iconTint="@color/red"/>
+    <item android:title="Spam" android:icon="@drawable/icon_spam" android:iconTint="@color/orange"/>
+</menu>
