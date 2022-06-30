@@ -9,7 +9,7 @@ import retrofit2.Response
 
 class FeedRepository {
     private var newsFeedList: List<News> = ArrayList()
-    private var observer: NewsFeedEventListener? = null
+    private var observer: NewsFeedsEventListener? = null
 
     fun getNewsFeeds(): List<News> {
         val news = Api.create().getNewsFeeds()
@@ -17,13 +17,10 @@ class FeedRepository {
             override fun onResponse(call: Call<List<News>>, response: Response<List<News>>) {
                 val body = response.body()
                 body?.let{
-                    Log.e("Response", "\${response.body()} = " + body)
+                    Log.e("Response", "\${response.body()} = $body")
                     newsFeedList = it
                 }
-
-                if (observer != null) {
-                    observer!!.onNewsFeedUpdated((newsFeedList as ArrayList<News>))
-                }
+                observer?.onNewsFeedUpdated((newsFeedList as ArrayList<News>))
             }
 
             override fun onFailure(call: Call<List<News>>, t: Throwable) {
@@ -33,7 +30,7 @@ class FeedRepository {
         return newsFeedList
     }
 
-    fun setObserver(observer: NewsFeedEventListener) {
+    fun setObserver(observer: NewsFeedsEventListener) {
         this.observer = observer
     }
 
@@ -43,7 +40,7 @@ class FeedRepository {
         news.enqueue(object : Callback<News>{
             override fun onResponse(call: Call<News>, response: Response<News>) {
                 Log.e("Response", "\${response.body()} = " + response.body())
-                newsFeed = response.body()!!
+                newsFeed = response.body()
                 observer?.onNewsFeedUpdated(arrayListOf(newsFeed) as ArrayList<News>)
             }
 

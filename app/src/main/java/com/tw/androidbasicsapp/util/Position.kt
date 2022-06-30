@@ -1,4 +1,4 @@
-package com.tw.androidbasicsapp.utilis
+package com.tw.androidbasicsapp.util
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

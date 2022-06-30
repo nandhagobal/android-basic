@@ -12,10 +12,10 @@ import com.squareup.picasso.Picasso
 import com.tw.androidbasicsapp.R
 import com.tw.androidbasicsapp.models.News
 import com.tw.androidbasicsapp.repositories.FeedRepository
-import com.tw.androidbasicsapp.repositories.NewsFeedEventListener
+import com.tw.androidbasicsapp.repositories.NewsFeedsEventListener
 import java.lang.Exception
 
-class NewsFeedActivity : AppCompatActivity(), NewsFeedEventListener {
+class NewsFeedActivity : AppCompatActivity(), NewsFeedsEventListener {
     private lateinit var displayImageView: ImageView
     private lateinit var titleTextView : TextView
     private lateinit var contentTextView : TextView

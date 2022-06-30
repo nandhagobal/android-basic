@@ -2,6 +2,6 @@ package com.tw.androidbasicsapp.repositories
 
 import com.tw.androidbasicsapp.models.News
 
-interface NewsFeedEventListener {
+interface NewsFeedsEventListener {
     fun onNewsFeedUpdated(newsFeeds :ArrayList<News>)
 }
