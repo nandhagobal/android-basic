@@ -5,12 +5,14 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentContainerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.tw.androidbasicsapp.recievers.AppBroadcastReceiver
 import com.tw.androidbasicsapp.R
+import com.tw.androidbasicsapp.fragments.ComposeUIFragment
 import com.tw.androidbasicsapp.fragments.EmailFragment
 import com.tw.androidbasicsapp.fragments.MusicPlayerFragment
 import com.tw.androidbasicsapp.fragments.NewsTabFragment
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        Toast.makeText(this,"hi",Toast.LENGTH_LONG)
 
         fragmentContainer = findViewById(R.id.fragmentContainerView)
 
@@ -38,6 +41,10 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.newsItem -> {
                     supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView,NewsTabFragment()).commit()
+                    true
+                }
+                R.id.UIItem -> {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView,ComposeUIFragment()).commit()
                     true
                 }
                 else -> false
