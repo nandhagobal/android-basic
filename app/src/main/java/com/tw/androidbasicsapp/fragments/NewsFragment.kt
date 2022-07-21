@@ -18,6 +18,7 @@ import com.tw.androidbasicsapp.repositories.FeedRepository
 import com.tw.androidbasicsapp.util.Position
 import com.tw.androidbasicsapp.util.Status
 import com.tw.androidbasicsapp.viewmodels.NewsListViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +34,8 @@ class NewsFragment : Fragment() {
     private lateinit var layoutManager: RecyclerView.LayoutManager
     private lateinit var recyclerViewAdapter: NewsAdapter
 
-    private lateinit var newsViewModel: NewsListViewModel;
-    private lateinit var newsListRepository: FeedRepository;
+    private val newsViewModel: NewsListViewModel by viewModel();
+//    private lateinit var newsListRepository: FeedRepository;
 
     // TODO: Rename and change types of parameters
     private var position: Position? = null
@@ -58,7 +59,7 @@ class NewsFragment : Fragment() {
         layoutManager = LinearLayoutManager(activity)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = layoutManager
-        setupViewModel()
+//        setupViewModel()
         setupObserver()
         position?.let {
             if (position == Position.HORIZONTAL) {
@@ -90,10 +91,10 @@ class NewsFragment : Fragment() {
             }
     }
 
-    private fun setupViewModel() {
-        newsListRepository = FeedRepository();
-        newsViewModel = ViewModelProvider(this, ViewModelFactory(newsListRepository)). get(NewsListViewModel::class.java)
-    }
+//    private fun setupViewModel() {
+//        newsListRepository = FeedRepository();
+//        newsViewModel = ViewModelProvider(this, ViewModelFactory(newsListRepository)). get(NewsListViewModel::class.java)
+//    }
 
     private fun setupObserver() {
         newsViewModel.getNewsFeedList().observe(this.viewLifecycleOwner, Observer {

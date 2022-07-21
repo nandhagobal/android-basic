@@ -12,10 +12,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.tw.androidbasicsapp.recievers.AppBroadcastReceiver
 import com.tw.androidbasicsapp.R
+import com.tw.androidbasicsapp.di.newsModule
 import com.tw.androidbasicsapp.fragments.ComposeUIFragment
 import com.tw.androidbasicsapp.fragments.EmailFragment
 import com.tw.androidbasicsapp.fragments.MusicPlayerFragment
 import com.tw.androidbasicsapp.fragments.NewsTabFragment
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 class MainActivity : AppCompatActivity() {
     private lateinit var fragmentContainer:FragmentContainerView
@@ -23,6 +27,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 //        Toast.makeText(this,"hi",Toast.LENGTH_LONG)
+        startKoin{
+            androidLogger()
+            androidContext(this@MainActivity)
+            modules(newsModule)
+        }
 
         fragmentContainer = findViewById(R.id.fragmentContainerView)
 
